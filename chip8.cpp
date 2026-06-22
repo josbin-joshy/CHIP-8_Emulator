@@ -5,6 +5,7 @@
 class Chip8
 {
     public:
+    Chip8(): pc(START_ADDRESS){}
     void loadROM(const char* filename);
 
     public:
@@ -26,7 +27,7 @@ class Chip8
 
     uint16_t opcode{};
 
-    Chip8(): pc(START_ADDRESS){}
+    
 };
 
 void Chip8::loadROM(const char* filename)
