@@ -40,6 +40,19 @@ void Chip8::loadROM(const *char filename)
 
         //reading the file onto the new array 
         //first setting fp to start so that it can read
-        file.seekg(0,std::ios::beg);
+        file.seekg(0, std::ios::beg);
+        file.read(buffer, size);
+
+        //closing it cause i odnt need it anymore :)---
+        file.close();
+
+        //now we load it muhahah
+        for(long i = 0; i<size; ++i)
+        {
+            memory[START_ADDRESS+i] = buffer[i];
+        }
+
+        //freeeeeeeeeeeeeee we dont like memory leaks
+        delete[] buffer;
     }
 }
