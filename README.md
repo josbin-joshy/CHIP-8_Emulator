@@ -1,7 +1,7 @@
 # CHIP-8_Emulator
 Building a CHIP-8 Emulator [C++]
 
-
+a
 # CHIP-8 Emulator
 
 A lightweight CHIP-8 emulator written in modern C++. This project emulates the original CHIP-8 virtual machine, allowing classic CHIP-8 programs and games to run on modern systems.
