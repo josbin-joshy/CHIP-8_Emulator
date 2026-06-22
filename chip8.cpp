@@ -5,7 +5,7 @@
 class Chip8
 {
     public:
-    void loadROM(const *char filename);
+    void loadROM(const char* filename);
 
     public:
     uint8_t registers[16]{};
@@ -18,16 +18,18 @@ class Chip8
     uint8_t stkptr{};
 
     uint8_t delayTimer{};
-    uint8_t stackTimer{};
+    uint8_t soundTimer{};
 
     uint8_t keypad[16]{};
 
     uint32_t video[64*32]{};
 
     uint16_t opcode{};
-}
 
-void Chip8::loadROM(const *char filename)
+    Chip8(): pc(START_ADDRESS){}
+};
+
+void Chip8::loadROM(const char* filename)
 {
     //open file as binary stream and move fp to the end
     std::ifstream file(filename, std::ios::binary | std::ios::ate);
@@ -35,7 +37,12 @@ void Chip8::loadROM(const *char filename)
     if(file.is_open())
     {
         //basically read the no of bytes and created a array of that size
-        std::streampos size{file.tellg()};
+        std::streamsize size{file.tellg()};
+
+        //checking for overflow
+        if(size > 4096-START_ADDRESS) return;
+
+        //creating the array of that size
         char* buffer{new char[size]};
 
         //reading the file onto the new array 
