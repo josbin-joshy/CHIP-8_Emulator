@@ -129,8 +129,9 @@ void Chip8::OP_00EE()
     pc = stack[--stkptr];
 }
 
-void Chip::OP_1nnn()
+void Chip8::OP_1nnn()
 {
     uint16_t address = opcode & 0x0FFFu;
     pc = address;
 }
+
