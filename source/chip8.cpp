@@ -174,3 +174,24 @@ void Chip8::OP_8xy1()
     registers[Vx] |= registers[Vy];
 }
 
+void Chip8::OP_8xy2()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    registers[Vx] &= registers[Vy];
+}
+
+void Chip8::OP_8xy3()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    registers[Vx] ^= registers[Vy];
+}
+
+void Chip8::OP_8xy4()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    registers[Vx] += registers[Vy];
+}
+
