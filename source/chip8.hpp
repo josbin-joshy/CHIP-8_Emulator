@@ -10,9 +10,10 @@ class Chip8
     void OP_00EE();  //Return from Subroutine RET
     void OP_1nnn();  //jump to location nnn JP
     void OP_2nnn();  //call subroutine at nnn CALL 
-    void OP_3xkk();
-    void OP_4xkk();
-    void OP_5xy0();
+    void OP_3xkk();  //checks if value of Vx == kk  and skips if true
+    void OP_4xkk();  //checks if value of Vx != kk and skips if true
+    void OP_5xy0();  //checks if values of Vx == Vy and skips if true
+    void OP_6xkk();  //
 
     public:
     uint8_t registers[16]{};

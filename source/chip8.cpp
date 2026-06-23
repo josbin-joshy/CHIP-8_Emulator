@@ -1,8 +1,8 @@
 #include<cstdint>
 #include<fstream>
 #include<cstring>
-// #include<chrono>
-// #include<random>
+#include<chrono>
+#include<random>
 #include"chip8.hpp"
 
 
@@ -110,5 +110,39 @@ void Chip8::OP_2nnn()
     stack[stkptr] = pc;
     ++stkptr;    
     pc = address;
+}
+
+void Chip8::OP_3xkk()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t kk = opcode & 0x00FFu;
+
+    //kk is a random value 
+    //checks if the Vx register value is same as kk
+    //if true icrement by 2
+    if(registers[Vx] == kk)
+        pc += 2;
+}
+
+void Chip8::OP_4xkk()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t kk = opcode & 0x00FFu;
+
+    //checks if the value at the Vx register is not equal to kk
+    //if true incremetns pc by 2 :0
+    if(registers[Vx] != kk)
+        pc += 2;
+}
+
+void Chip8::OP_5xy0()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+
+    //checking if the values of registers Vx and Vy are equal
+    // if true then increment pc by 2 once again   :()
+    if(registers[Vx] == registers[Vy])
+        pc += 2;
 }
 
