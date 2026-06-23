@@ -36,8 +36,9 @@ class Chip8
     public:
 
     void loadROM(const char* filename);
-    void CLS();
-    void RET();
+    void OP_00E0();
+    void OP_00EE();
+    void OP_1nnn();
 
     public:
     uint8_t registers[16]{};
@@ -117,13 +118,19 @@ void Chip8::loadROM(const char* filename)
     
 }
 
-void Chip8::CLS()
+void Chip8::OP_00E0()
 {
     memset(video,0,sizeof(video));
 }
 
 
-void Chip8::RET()
+void Chip8::OP_00EE()
 {
     pc = stack[--stkptr];
+}
+
+void Chip::OP_1nnn()
+{
+    uint16_t address = opcode & 0x0FFFu;
+    pc = address;
 }
