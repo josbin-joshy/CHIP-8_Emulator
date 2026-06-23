@@ -1,6 +1,8 @@
 #include<cstdint>
 #include<fstream>
-#define START_ADDRESS 0x200
+
+
+constexpr uint16_t START_ADDRESS{0x200};
 
 class Chip8
 {
@@ -29,6 +31,8 @@ class Chip8
     uint32_t video[64*32]{};
 
     uint16_t opcode{};
+
+    static constexpr unsigned int FONTSET_SIZE{80};
 
     
 };
