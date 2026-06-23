@@ -35,67 +35,6 @@ CHIP-8 is an interpreted programming language originally developed by Joseph Wei
 | Input     | 16-key hexadecimal keypad |
 | Timers    | Delay timer, Sound timer  |
 
-## Project Structure
-
-```text
-chip8-emulator/
-├── include/
-│   ├── Chip8.hpp
-│   ├── Display.hpp
-│   ├── Keyboard.hpp
-│   └── Opcodes.hpp
-│
-├── src/
-│   ├── Chip8.cpp
-│   ├── Display.cpp
-│   ├── Keyboard.cpp
-│   ├── Opcodes.cpp
-│   └── main.cpp
-│
-├── roms/
-│   ├── pong.ch8
-│   ├── tetris.ch8
-│   └── invaders.ch8
-│
-├── assets/
-│   └── fonts.bin
-│
-├── CMakeLists.txt
-└── README.md
-```
-
-## Requirements
-
-* C++17 or newer
-* CMake 3.16+
-* SDL2 (recommended for graphics, input, and audio)
-
-## Building
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/chip8-emulator.git
-cd chip8-emulator
-```
-
-### Configure
-
-```bash
-cmake -B build
-```
-
-### Build
-
-```bash
-cmake --build build --config Release
-```
-
-### Run
-
-```bash
-./build/chip8-emulator roms/pong.ch8
-```
 
 ## Controls
 
@@ -139,65 +78,7 @@ The emulator repeatedly performs:
 0x200 - 0xFFF : Program ROM and work RAM
 ```
 
-## Supported Instructions
 
-The emulator supports all standard CHIP-8 instructions, including:
-
-* Flow control
-* Arithmetic operations
-* Bitwise operations
-* Sprite rendering
-* Timers
-* Keypad input
-* Memory operations
-
-Examples:
-
-```text
-00E0 - Clear screen
-00EE - Return from subroutine
-1NNN - Jump to address NNN
-6XNN - Set VX = NN
-7XNN - Add NN to VX
-ANNN - Set I = NNN
-DXYN - Draw sprite
-```
-
-## Testing
-
-Test ROMs commonly used for validation:
-
-* IBM Logo
-* CHIP-8 Test Suite
-* Corax+ Opcode Test
-* BC_test
-* Timendus CHIP-8 Test Suite
-
-Run a ROM:
-
-```bash
-./chip8-emulator roms/test_opcode.ch8
-```
-
-## Future Improvements
-
-* Super CHIP (SCHIP) support
-* XO-CHIP support
-* Save states
-* Rewind functionality
-* Debugger
-* Breakpoints and memory inspection
-* Disassembler
-* Audio enhancements
-
-## Performance
-
-The emulator is designed to:
-
-* Execute instructions efficiently
-* Maintain accurate timer behavior
-* Minimize input latency
-* Remain portable across platforms
 
 ## References
 
