@@ -44,8 +44,12 @@ class Chip8
 
     void OP_8xy7();  //almost same as 8xy5 but reverse
 
-    void OP_8xyE();  //
-    void OP_9xy0();
+    void OP_8xyE();  //flag is 1 if most significant digit is 1 else 0,
+                     //then Vx is multiplied by 2
+
+    void OP_9xy0();  //if values of Vx != Vy then pc+=2
+
+    void OP_Annn();  //value of register I is set to nnn (index to nnn)
 
     public:
     uint8_t registers[16]{};
