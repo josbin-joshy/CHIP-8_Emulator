@@ -6,24 +6,45 @@ class Chip8
     public:
 
     void loadROM(const char* filename);
+
     void OP_00E0();  //Clear Display CLS
+
     void OP_00EE();  //Return from Subroutine RET
+
     void OP_1nnn();  //jump to location nnn JP
+
     void OP_2nnn();  //call subroutine at nnn CALL 
+
     void OP_3xkk();  //checks if value of Vx == kk  and skips if true
+
     void OP_4xkk();  //checks if value of Vx != kk and skips if true
+
     void OP_5xy0();  //checks if values of Vx == Vy and skips if true
+
+
     void OP_6xkk();  //interpreter puts the value kk into Vx register
+
     void OP_7xkk();  //Vx = Vx + kk
+
     void OP_8xy0();  //Vx = Vy
+
     void OP_8xy1();  //Vx = Vx | Vy 
+
     void OP_8xy2();  //Vx = Vx & Vy
+
     void OP_8xy3();  //Vx = Vx ^ Vy
-    void OP_8xy4();  //Vx = Vx + Vy
-    void OP_8xy5();  //Vx = Vx - Vy
-    void OP_8xy6();  //this one is confusing
-    void OP_8xy7();
-    void OP_8xyE();
+
+    void OP_8xy4();  //Vx = Vx + Vy, if sum greater than 255 flag is 1 else 0
+                     // then lowest 8bits of the sum is kept in Vx
+
+    void OP_8xy5();  //if Vx > Vy then flag is 1 else 0, Vx = Vx - Vy
+
+    void OP_8xy6();  //this ones a bit confusing we check if the least significant bit of Vx is 1,
+                     //if true flag is 1 else 0, then divide Vx by 2
+
+    void OP_8xy7();  //almost same as 8xy5 but reverse
+
+    void OP_8xyE();  //
     void OP_9xy0();
 
     public:
