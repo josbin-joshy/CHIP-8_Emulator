@@ -218,8 +218,11 @@ void Chip8::OP_8xy5()
 void Chip8::OP_8xy6()
 {
     uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    if(registers[Vx] & 0x000F )
-        registers[0x000F] = 1;
-    else 
-        registers[0x000F] = 0;
+    
+    //if least significant digit is 1 then the flag is 1 else 0, thats all 
+    //;)
+    registers[0x000F] = (registers[Vx] & 0x0001u);
+
+    //divide by 2
+    registers[Vx] >>= 1;
 }
