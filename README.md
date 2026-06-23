@@ -201,10 +201,11 @@ The emulator is designed to:
 
 ## References
 
-* Cowgod's CHIP-8 Technical Reference
-* CHIP-8 Wikipedia Documentation
+* [Cowgod's CHIP-8 Technical Reference](http://devernay.free.fr/hacks/chip8/C8TECH10.HTM)
+* [CHIP-8 Wikipedia Documentation](https://en.wikipedia.org/wiki/CHIP-8)
 * Tobias V. Langhoff's CHIP-8 Guide
 * Timendus CHIP-8 Test Suite
+* https://austinmorlan.com/posts/chip8_emulator/
 
 ## License
 
