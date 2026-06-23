@@ -258,4 +258,10 @@ void Chip8::OP_Annn()
     index = address;
 }
 
+void Chip8::OP_Bnnn()
+{
+    uint16_t address = opcode & 0x0FFFu;
+    pc = registers[0] + address;
+}
+
 

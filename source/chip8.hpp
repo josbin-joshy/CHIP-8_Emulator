@@ -51,6 +51,8 @@ class Chip8
 
     void OP_Annn();  //value of register I is set to nnn (index to nnn)
 
+    void OP_Bnnn();  //value of pc is set to nnn + V0
+
     public:
     uint8_t registers[16]{};
     uint8_t memory[4096]{};
