@@ -217,5 +217,9 @@ void Chip8::OP_8xy5()
 
 void Chip8::OP_8xy6()
 {
-
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    if(registers[Vx] & 0x000F )
+        registers[0x000F] = 1;
+    else 
+        registers[0x000F] = 0;
 }
