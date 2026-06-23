@@ -39,6 +39,10 @@ class Chip8
     void OP_00E0();
     void OP_00EE();
     void OP_1nnn();
+    void OP_2nnn();
+    void OP_3xkk();
+    void OP_4xkk();
+    void OP_5xy0();
 
     public:
     uint8_t registers[16]{};
