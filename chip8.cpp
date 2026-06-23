@@ -5,7 +5,10 @@
 class Chip8
 {
     public:
+    //initialise PC
     Chip8(): pc(START_ADDRESS){}
+
+
     void loadROM(const char* filename);
 
     public:
