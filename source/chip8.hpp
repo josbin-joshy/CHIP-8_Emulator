@@ -18,10 +18,10 @@ class Chip8
     void OP_8xy0();  //Vx = Vy
     void OP_8xy1();  //Vx or Vy 
     void OP_8xy2();  //Vx and Vy
-    void OP_8xy3();
-    void OP_8xy4();
-    void OP_8xy5();
-    void OP_8xy6();
+    void OP_8xy3();  //Vx xor Vy
+    void OP_8xy4();  //Vx = Vx + Vy
+    void OP_8xy5();  //Vx = Vx - Vy
+    void OP_8xy6();  //this one is confusing
     void OP_8xy7();
     void OP_8xyE();
     void OP_9xy0();
