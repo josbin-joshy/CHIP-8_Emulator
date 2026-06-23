@@ -239,4 +239,17 @@ void Chip8::OP_8xy7()
     registers[Vx] = registers[Vy] - registers[Vx];
 }
 
+void Chip8::OP_8xyE()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    registers[0x000F] = (registers[Vx] & 0x0080u) << 7u;
+    registers[Vx] <<= 1;
+}
 
+void Chip8::OP_9xy0()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    if(registers[Vx] != registers[Vy])
+        pc += 2;
+}
