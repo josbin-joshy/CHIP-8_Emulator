@@ -151,6 +151,5 @@ void Chip8::OP_6xkk()
     uint16_t Vx = (opcode & 0x0F00u) >> 8u;
     uint16_t kk = opcode & 0x00FFu;
     registers[Vx] = kk;
-    //asdjias
 }
 
