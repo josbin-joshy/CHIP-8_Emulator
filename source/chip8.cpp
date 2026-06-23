@@ -3,6 +3,7 @@
 #include<cstring>
 // #include<chrono>
 // #include<random>
+#include"chip8.hpp"
 
 
 constexpr uint16_t START_ADDRESS{0x200};
@@ -31,43 +32,7 @@ uint8_t fontset[FONTSET_SIZE] =
     };
 
 
-class Chip8
-{
-    public:
 
-    void loadROM(const char* filename);
-    void OP_00E0();
-    void OP_00EE();
-    void OP_1nnn();
-    void OP_2nnn();
-    void OP_3xkk();
-    void OP_4xkk();
-    void OP_5xy0();
-
-    public:
-    uint8_t registers[16]{};
-    uint8_t memory[4096]{};
-
-    uint16_t index{};
-    uint16_t pc{};
-
-    uint16_t stack[16]{};
-    uint8_t stkptr{};
-
-    uint8_t delayTimer{};
-    uint8_t soundTimer{};
-
-    uint8_t keypad[16]{};
-
-    uint32_t video[64*32]{};
-
-    uint16_t opcode{};
-
-    
-
-    Chip8();
-    
-};
 
 
 Chip8::Chip8()
