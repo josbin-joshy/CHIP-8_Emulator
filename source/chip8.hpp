@@ -1,3 +1,6 @@
+#pragma once
+#include<cstdint>
+
 class Chip8
 {
     public:
