@@ -13,7 +13,18 @@ class Chip8
     void OP_3xkk();  //checks if value of Vx == kk  and skips if true
     void OP_4xkk();  //checks if value of Vx != kk and skips if true
     void OP_5xy0();  //checks if values of Vx == Vy and skips if true
-    void OP_6xkk();  //
+    void OP_6xkk();  //interpreter puts the value kk into Vx register
+    void OP_7xkk();  //Vx = Vx + kk
+    void OP_8xy0();  //Vx = Vy
+    void OP_8xy1();  //Vx or Vy 
+    void OP_8xy2();  //Vx and Vy
+    void OP_8xy3();
+    void OP_8xy4();
+    void OP_8xy5();
+    void OP_8xy6();
+    void OP_8xy7();
+    void OP_8xyE();
+    void OP_9xy0();
 
     public:
     uint8_t registers[16]{};
