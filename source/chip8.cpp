@@ -1,7 +1,8 @@
 #include<cstdint>
 #include<fstream>
-#include<chrono>
-#include<random>
+#include<cstring>
+// #include<chrono>
+// #include<random>
 
 
 constexpr uint16_t START_ADDRESS{0x200};
@@ -35,6 +36,8 @@ class Chip8
     public:
 
     void loadROM(const char* filename);
+    void CLS();
+    void RET();
 
     public:
     uint8_t registers[16]{};
@@ -112,6 +115,15 @@ void Chip8::loadROM(const char* filename)
         delete[] buffer;
     }
     
-    
-    
+}
+
+void Chip8::CLS()
+{
+    memset(video,0,sizeof(video));
+}
+
+
+void Chip8::RET()
+{
+    pc = stack[--stkptr];
 }
