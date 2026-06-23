@@ -44,9 +44,7 @@ Chip8::Chip8()
     for(unsigned int i = 0; i < FONTSET_SIZE; ++i)
     {
         memory[FONTSET_START_ADDRESS+i] = fontset[i];
-    }
-
-    
+    }   
 
 
 }
@@ -242,7 +240,7 @@ void Chip8::OP_8xy7()
 void Chip8::OP_8xyE()
 {
     uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    registers[0x000F] = (registers[Vx] & 0x0080u) << 7u;
+    registers[0x000F] = (registers[Vx] & 0x0080u) >> 7u;
     registers[Vx] <<= 1;
 }
 
@@ -253,3 +251,5 @@ void Chip8::OP_9xy0()
     if(registers[Vx] != registers[Vy])
         pc += 2;
 }
+
+
