@@ -290,6 +290,7 @@ void Chip8::OP_Dxyn()
 
     for(unsigned int row = 0 ; row < byte ; ++row)
     {
+        //reading it from memory
         uint8_t sprite = memory[index + row];
         
         for(unsigned int col = 0 ; col < 8 ; ++col)
@@ -308,7 +309,21 @@ void Chip8::OP_Dxyn()
         }
     }
 
-
 }
 
+void Chip8::OP_Ex9E()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t key = registers[Vx];
+    if(keypad[key])
+        pc+=2;
+}
+
+void Chip8::OP_ExA1()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t key = registers[Vx];
+    if(!keypad[key])
+        pc+=2;
+}
 
