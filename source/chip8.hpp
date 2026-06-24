@@ -3,7 +3,7 @@
 
 class Chip8
 {
-    public:
+public:
 
     void loadROM(const char* filename);
 
@@ -55,7 +55,7 @@ class Chip8
 
     void OP_Cxkk();  //generate a random number and & it with kk then store it in Vx(weird shit)
 
-    public:
+public:
     uint8_t registers[16]{};
     uint8_t memory[4096]{};
 
@@ -77,5 +77,11 @@ class Chip8
     
 
     Chip8();
+
+
+    //hmmmm
+public:
+    std::default_random_engine randGen;
+	std::uniform_int_distribution<uint8_t> randByte;
     
 };
