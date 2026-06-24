@@ -49,7 +49,7 @@ Chip8::Chip8() : randGen(std::chrono::system_clock::now().time_since_epoch().cou
 
     //initialize RNG
 	randByte = std::uniform_int_distribution<uint8_t>(0, 255U);
-
+    
 
 }
 
