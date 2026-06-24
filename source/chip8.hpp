@@ -1,5 +1,6 @@
 #pragma once
 #include<cstdint>
+#include<random>
 
 class Chip8
 {
@@ -49,11 +50,26 @@ public:
 
     void OP_9xy0();  //if values of Vx != Vy then pc+=2
 
-    void OP_Annn();  //value of register I is set to nnn (index to nnn)
+    void OP_Annn();  //value of register index is set to nnn (index to nnn)
 
     void OP_Bnnn();  //value of pc is set to nnn + V0
 
-    void OP_Cxkk();  //generate a random number and & it with kk then store it in Vx(weird shit)
+    void OP_Cxkk();  //generate a random number and & it with kk then store it in Vx(basically a ranodm numeber generaotr)
+
+    void OP_Dxyn();  //i am going to quit writing comments here
+
+    void OP_Ex9E();
+    void OP_ExA1();
+    void OP_Fx07();
+    void OP_Fx0A();
+    void OP_Fx15();
+    void OP_Fx18();
+    void OP_Fx1E();
+    void OP_Fx29();
+    void OP_Fx33();
+    void OP_Fx55();
+    void OP_Fx65();
+    
 
 public:
     uint8_t registers[16]{};
