@@ -373,3 +373,34 @@ void Chip8::OP_Fx29()
     index = FONTSET_START_ADDRESS + (5 * registers[Vx]);
 }
 
+void Chip8::OP_Fx33()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t value = registers[Vx];
+
+    //1
+    memory[index+2] = value % 10;
+    value /= 10;
+
+    //10
+    memory[index+1] = value % 10;
+    value /= 10;
+
+    //100
+    memory[index] = value % 10;
+}
+
+void Chip8::OP_Fx55()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    for( uint8_t i = 0 ; i <= Vx ; ++i)
+    {
+        memory[index + i] = registers[i];
+    }
+}
+
+void Chip8::OP_Fx65()
+{
+
+}
+
