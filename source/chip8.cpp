@@ -327,3 +327,25 @@ void Chip8::OP_ExA1()
         pc+=2;
 }
 
+void Chip8::OP_Fx07()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    registers[Vx] = delayTimer;
+}
+void Chip8::OP_Fx0A()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    bool keypress{false};
+    for(uint8_t i = 0 ; i < 16 ; ++i)
+    {
+        if(keypad[i])
+        {
+            registers[Vx] = i;
+            keypress = true;
+            break;
+        }
+        if(!keypress)
+            pc += 2;
+    }
+}
+
