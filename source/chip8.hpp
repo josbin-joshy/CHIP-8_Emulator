@@ -2,12 +2,12 @@
 #include<cstdint>
 #include<random>
 
-constexpr unsigned int KEY_COUNT = 16;
-constexpr unsigned int MEMORY_SIZE = 4096;
-constexpr unsigned int REGISTER_COUNT = 16;
-constexpr unsigned int STACK_COUNT = 16;
-constexpr unsigned int VIDEO_HEIGHT = 32;
-constexpr unsigned int VIDEO_WIDTH = 64;
+constexpr unsigned int KEY_COUNT{16};
+constexpr unsigned int MEMORY_SIZE{4096};
+constexpr unsigned int REGISTER_COUNT{16};
+constexpr unsigned int STACK_COUNT{16};
+constexpr unsigned int VIDEO_HEIGHT{32};
+constexpr unsigned int VIDEO_WIDTH{64};
 
 class Chip8
 {
