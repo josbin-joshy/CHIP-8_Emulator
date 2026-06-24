@@ -192,8 +192,8 @@ void Chip8::OP_8xy3()
 
 void Chip8::OP_8xy4()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vy = (opcode & 0x00F0u) >> 4u;
     uint16_t sum = registers[Vx] + registers[Vy];
     
     if(sum > 255U)
@@ -206,8 +206,8 @@ void Chip8::OP_8xy4()
 
 void Chip8::OP_8xy5()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vy = (opcode & 0x00F0u) >> 4u;
     
     if(registers[Vx] > registers[Vy])
         registers[0x000F] = 1;
@@ -219,7 +219,7 @@ void Chip8::OP_8xy5()
 
 void Chip8::OP_8xy6()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
     
     //if least significant digit is 1 then the flag is 1 else 0, thats all 
     //;)
@@ -231,8 +231,8 @@ void Chip8::OP_8xy6()
 
 void Chip8::OP_8xy7()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vy = (opcode & 0x00F0u) >> 4u;
     if(registers[Vy] > registers[Vy])
         registers[0x000F] = 1;
     else    
@@ -243,15 +243,15 @@ void Chip8::OP_8xy7()
 
 void Chip8::OP_8xyE()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
     registers[0x000F] = (registers[Vx] & 0x0080u) >> 7u;
     registers[Vx] <<= 1;
 }
 
 void Chip8::OP_9xy0()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vy = (opcode & 0x00F0u) >> 4u;
     if(registers[Vx] != registers[Vy])
         pc += 2;
 }
@@ -270,17 +270,43 @@ void Chip8::OP_Bnnn()
 
 void Chip8::OP_Cxkk()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    uint16_t kk = opcode & 0x00FFu;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t kk = opcode & 0x00FFu;
 
     registers[Vx] = randByte(randGen) & kk;
 }
 
 void Chip8::OP_Dxyn()
 {
-    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
-    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
-    uint16_t byte = opcode & 0x000Fu;
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint8_t Vy = (opcode & 0x00F0u) >> 4u;
+    uint8_t byte = opcode & 0x000Fu;
+
+    //modulus is to wrap around the screen
+    uint8_t xPos = registers[Vx] % VIDEO_WIDTH;
+    uint8_t yPos = registers[Vy] % VIDEO_HEIGHT;
+
+    registers[0x000F] = 0;
+
+    for(unsigned int i = 0 ; i < byte ; ++i)
+    {
+        uint8_t sprite = memory[index + i];
+        
+        for(unsigned int j = 0 ; j < 8 ; ++j)
+        {
+            uint8_t spritePixel = sprite & (0x0080u >> j);
+            uint32_t* screenPixel = &video[(xPos + j) + (VIDEO_WIDTH * (xPos + i))];
+            if(spritePixel)
+            {
+                if(*screenPixel == 0xFFFFFFFF)
+                {
+                    registers[0x00F0] = 1;
+                }
+
+                *screenPixel ^= 0xFFFFFFFF;
+            }
+        }
+    }
 
 
 }

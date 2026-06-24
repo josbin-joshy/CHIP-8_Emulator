@@ -101,9 +101,9 @@ public:
     uint8_t delayTimer{};
     uint8_t soundTimer{};
 
-    uint8_t keypad[16]{};
+    uint8_t keypad[KEY_COUNT]{};
 
-    uint32_t video[64*32]{};
+    uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
 
     uint16_t opcode{};
 
