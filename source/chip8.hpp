@@ -53,6 +53,8 @@ class Chip8
 
     void OP_Bnnn();  //value of pc is set to nnn + V0
 
+    void OP_Cxkk();  //generate a random number and & it with kk then store it in Vx(weird shit)
+
     public:
     uint8_t registers[16]{};
     uint8_t memory[4096]{};

@@ -3,6 +3,7 @@
 #include<cstring>
 #include<chrono>
 #include<random>
+#include<iostream>
 #include"chip8.hpp"
 
 
@@ -262,6 +263,11 @@ void Chip8::OP_Bnnn()
 {
     uint16_t address = opcode & 0x0FFFu;
     pc = registers[0] + address;
+}
+
+void Chip8::OP_Cxkk()
+{
+
 }
 
 
