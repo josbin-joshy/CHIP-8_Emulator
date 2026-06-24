@@ -345,7 +345,7 @@ void Chip8::OP_Fx0A()
             break;
         }
         if(!keypress)
-            pc += 2;
+            pc -= 2;
     }
 }
 
@@ -361,4 +361,14 @@ void Chip8::OP_Fx18()
     soundTimer = registers[Vx];
 }
 
+void Chip8::OP_Fx1E()
+{
+    uint8_t Vx = (opcode & 0x0F00u) >> 8u;
+    index += registers[Vx];
+}
+
+void Chip8::OP_Fx29()
+{
+
+}
 
