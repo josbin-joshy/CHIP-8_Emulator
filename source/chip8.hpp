@@ -2,6 +2,13 @@
 #include<cstdint>
 #include<random>
 
+const unsigned int KEY_COUNT = 16;
+const unsigned int MEMORY_SIZE = 4096;
+const unsigned int REGISTER_COUNT = 16;
+const unsigned int STACK_COUNT = 16;
+const unsigned int VIDEO_HEIGHT = 32;
+const unsigned int VIDEO_WIDTH = 64;
+
 class Chip8
 {
 public:
@@ -56,29 +63,39 @@ public:
 
     void OP_Cxkk();  //generate a random number and & it with kk then store it in Vx(basically a ranodm numeber generaotr)
 
-    void OP_Dxyn();  //i am going to quit writing comments here
+    void OP_Dxyn();  //DRW Vx, Vy, nibble
 
-    void OP_Ex9E();
-    void OP_ExA1();
-    void OP_Fx07();
-    void OP_Fx0A();
-    void OP_Fx15();
-    void OP_Fx18();
-    void OP_Fx1E();
-    void OP_Fx29();
-    void OP_Fx33();
-    void OP_Fx55();
-    void OP_Fx65();
+    void OP_Ex9E();  //SKP Vx
+
+    void OP_ExA1();  //SKNP Vx
+
+    void OP_Fx07();  //LD Vx, DT
+    
+    void OP_Fx0A();  //LD Vx, K
+
+    void OP_Fx15();  //LD DT, Vx
+
+    void OP_Fx18();  //LD ST, Vx
+    
+    void OP_Fx1E();  //ADD I, Vx
+    
+    void OP_Fx29();  //LD F, Vx
+    
+    void OP_Fx33();  //LD B, Vx
+    
+    void OP_Fx55();  //LD [I], Vx
+    
+    void OP_Fx65();  //LD Vx, [I]
     
 
 public:
-    uint8_t registers[16]{};
-    uint8_t memory[4096]{};
+    uint8_t registers[REGISTER_COUNT]{};
+    uint8_t memory[MEMORY_SIZE]{};
 
     uint16_t index{};
     uint16_t pc{};
 
-    uint16_t stack[16]{};
+    uint16_t stack[STACK_COUNT]{};
     uint8_t stkptr{};
 
     uint8_t delayTimer{};

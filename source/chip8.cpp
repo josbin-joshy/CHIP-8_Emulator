@@ -276,4 +276,11 @@ void Chip8::OP_Cxkk()
     registers[Vx] = randByte(randGen) & kk;
 }
 
+void Chip8::OP_Dxyn()
+{
+    uint16_t Vx = (opcode & 0x0F00u) >> 8u;
+    uint16_t Vy = (opcode & 0x00F0u) >> 4u;
+    uint16_t byte = opcode & 0x000Fu;
+}
+
 
