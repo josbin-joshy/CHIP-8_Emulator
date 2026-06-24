@@ -3,7 +3,6 @@
 #include<cstring>
 #include<chrono>
 #include<random>
-#include<iostream>
 #include"chip8.hpp"
 
 
