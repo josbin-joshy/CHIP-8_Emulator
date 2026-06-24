@@ -288,14 +288,14 @@ void Chip8::OP_Dxyn()
 
     registers[0x000F] = 0;
 
-    for(unsigned int i = 0 ; i < byte ; ++i)
+    for(unsigned int row = 0 ; row < byte ; ++row)
     {
-        uint8_t sprite = memory[index + i];
+        uint8_t sprite = memory[index + row];
         
-        for(unsigned int j = 0 ; j < 8 ; ++j)
+        for(unsigned int col = 0 ; col < 8 ; ++col)
         {
-            uint8_t spritePixel = sprite & (0x0080u >> j);
-            uint32_t* screenPixel = &video[(xPos + i) + (VIDEO_WIDTH * (xPos + j))];
+            uint8_t spritePixel = sprite & (0x0080u >> col);
+            uint32_t* screenPixel = &video[(xPos + col) + (VIDEO_WIDTH * (yPos + row))];
             if(spritePixel)
             {
                 if(*screenPixel == 0xFFFFFFFF)
