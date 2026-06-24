@@ -295,7 +295,7 @@ void Chip8::OP_Dxyn()
         for(unsigned int j = 0 ; j < 8 ; ++j)
         {
             uint8_t spritePixel = sprite & (0x0080u >> j);
-            uint32_t* screenPixel = &video[(xPos + j) + (VIDEO_WIDTH * (xPos + i))];
+            uint32_t* screenPixel = &video[(xPos + i) + (VIDEO_WIDTH * (xPos + j))];
             if(spritePixel)
             {
                 if(*screenPixel == 0xFFFFFFFF)
