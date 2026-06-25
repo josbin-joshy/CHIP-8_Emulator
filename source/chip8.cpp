@@ -300,7 +300,7 @@ void Chip8::OP_Dxyn()
             {
                 if(*screenPixel == 0xFFFFFFFF)
                 {
-                    registers[0x00F0] = 1;
+                    registers[0x000F] = 1;
                 }
 
                 *screenPixel ^= 0xFFFFFFFF;
