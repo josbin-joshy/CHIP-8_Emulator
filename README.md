@@ -6,19 +6,6 @@ Building a CHIP-8 Emulator [C++]
 
 A lightweight CHIP-8 emulator written in modern C++. This project emulates the original CHIP-8 virtual machine, allowing classic CHIP-8 programs and games to run on modern systems.
 
-## Features
-
-* Complete CHIP-8 CPU implementation
-* 4 KB memory emulation
-* 16 general-purpose 8-bit registers (V0–VF)
-* Index register (I)
-* Program counter and stack support
-* 64×32 monochrome display
-* Hexadecimal keypad input (16 keys)
-* Delay and sound timers
-* ROM loading support
-* Cross-platform C++ codebase
-* Configurable execution speed
 
 ## CHIP-8 Overview
 
