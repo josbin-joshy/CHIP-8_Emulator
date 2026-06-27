@@ -15,6 +15,8 @@ public:
 
     void loadROM(const char* filename);
 
+private:
+
     void OP_00E0();  //Clear Display CLS
 
     void OP_00EE();  //Return from Subroutine RET
@@ -87,8 +89,6 @@ public:
     
     void OP_Fx65();  //LD Vx, [I]
     
-
-public:
     uint8_t registers[REGISTER_COUNT]{};
     uint8_t memory[MEMORY_SIZE]{};
 
