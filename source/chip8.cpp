@@ -451,6 +451,7 @@ void Chip8::cycle()
             break;
         case 7:
             OP_7xkk();
+            break;
         
 
         case 8:
@@ -492,6 +493,7 @@ void Chip8::cycle()
                     OP_8xyE();
                     break;
             }
+            break;
         
         case 9:
             OP_9xy0();
@@ -503,6 +505,62 @@ void Chip8::cycle()
 
         case 0xBu:
             OP_Bnnn();
+            break;
+
+        case 0xCu:
+            OP_Cxkk();
+            break;
+        
+        case 0xDu:
+            OP_Dxyn();
+            break;
+        
+        case 0xEu:
+            if((opcode & 0x000Fu) == 0x000Eu)
+                OP_Ex9E();
+            else
+                OP_ExA1();
+            break;
+        
+        case 0xFu:
+            switch(opcode & 0x00FFu)
+            {
+                case 0x0007u:
+                    OP_Fx07();
+                    break;
+                
+                case 0x000Au:
+                    OP_Fx0A();
+                    break;
+
+                case 0x0015u:
+                    OP_Fx15();
+                    break;
+
+                case 0x0018u:
+                    OP_Fx18();
+                    break;
+
+                case 0x001Eu:
+                    OP_Fx1E();
+                    break;
+                
+                case 0x0029u:
+                    OP_Fx29();
+                    break;
+                
+                case 0x0033u:
+                    OP_Fx33();
+                    break;
+                
+                case 0x0055u:
+                    OP_Fx55();
+                    break;
+                
+                case 0x0065u:
+                    OP_Fx65();
+                    break;
+            }
             break;
     }
 

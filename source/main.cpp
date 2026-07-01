@@ -7,5 +7,4 @@ int main(int argc, char** argv)
 {
     const char* filename{argv[argc-1]};
     chip8.loadROM(filename);
-
 }
