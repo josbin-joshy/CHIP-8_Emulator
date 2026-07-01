@@ -14,6 +14,7 @@ class Chip8
 public:
 
     void loadROM(const char* filename);
+    void cycle();
 
 private:
 

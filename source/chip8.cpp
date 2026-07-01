@@ -407,3 +407,54 @@ void Chip8::OP_Fx65()
     }
 }
 
+
+void Chip8::cycle()
+{
+    //fetching instrucitons
+    opcode = (memory[pc] << 8u) | memory[pc + 1];
+    pc += 2;
+
+    //
+    switch(opcode & 0xF000u)
+    {
+        case 0:
+            if(opcode & 0x000Fu)
+                OP_00EE();
+            else
+                OP_00E0;
+            break;
+        
+        
+
+        case 1:
+            OP_1nnn();
+            break;
+        case 2:
+            OP_2nnn();
+            break;
+
+        case 3:
+            OP_3xkk();
+            break;
+        
+
+        case 4:
+            OP_4xkk();
+            break;
+
+        case 5:
+            OP_5xy0();
+            break;
+        
+        case 6:
+            OP_6xkk();
+            break;
+        case 7:
+            OP_7xkk();
+        
+
+        case 8:
+            
+    }
+
+}
