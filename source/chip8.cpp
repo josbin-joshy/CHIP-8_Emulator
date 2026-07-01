@@ -415,13 +415,13 @@ void Chip8::cycle()
     pc += 2;
 
     //
-    switch(opcode & 0xF000u)
+    switch((opcode & 0xF000u) >> 12u)
     {
         case 0:
             if(opcode & 0x000Fu)
                 OP_00EE();
             else
-                OP_00E0;
+                OP_00E0();
             break;
         
         
@@ -454,7 +454,12 @@ void Chip8::cycle()
         
 
         case 8:
-            
+            switch(opcode & 0x000Fu)
+            {
+                case 0:
+                    OP_8xy0();
+                    break;
+            }
     }
 
 }
