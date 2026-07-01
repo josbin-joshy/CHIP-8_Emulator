@@ -479,7 +479,31 @@ void Chip8::cycle()
                 case 5:
                     OP_8xy5();
                     break;
+
+                case 6:
+                    OP_8xy6();
+                    break;
+
+                case 7:
+                    OP_8xy7();
+                    break;
+                
+                case 0xEu:
+                    OP_8xyE();
+                    break;
             }
+        
+        case 9:
+            OP_9xy0();
+            break;
+        
+        case 0xAu:
+            OP_Annn();
+            break;
+
+        case 0xBu:
+            OP_Bnnn();
+            break;
     }
 
 }
