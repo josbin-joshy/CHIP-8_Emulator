@@ -3,6 +3,7 @@
 #include<cstring>
 #include<chrono>
 #include<random>
+#include<vector>
 #include"chip8.hpp"
 
 
@@ -63,15 +64,15 @@ void Chip8::loadROM(const char* filename)
         std::streamsize size{file.tellg()};
 
         //checking for overflow
-        if(size > 4096-START_ADDRESS) return;
+        if(size < 0 || size > 4096-START_ADDRESS) return;
 
         //creating the array of that size
-        char* buffer{new char[size]};
+        std::vector<char> buffer(size); 
 
         //reading the file onto the new array 
         //first setting fp to start so that it can read
         file.seekg(0, std::ios::beg);
-        file.read(buffer, size);
+        file.read(buffer.data(), size);
 
         //closing it cause i odnt need it anymore :)---
         file.close();
@@ -83,7 +84,6 @@ void Chip8::loadROM(const char* filename)
         }
 
         //freeeeeeeeeeeeeee we dont like memory leaks
-        delete[] buffer;
     }
     
 }
