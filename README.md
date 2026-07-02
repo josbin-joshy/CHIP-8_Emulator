@@ -2,8 +2,34 @@
 ```THIS DOES NOT WORK YET```
 ```:(```
 
-# CHIP-8_Emulator
+# PROJECT
 Building a CHIP-8 Emulator [C++]
+
+## Build
+
+### CMake (recommended)
+
+```bash 
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+## RUN
+``` Linux / MacOS
+./chip8 ../path/to/rom
+```
+
+``` Windows(msvc)
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+```
+```RUN
+Release\chip8.exe ..\path\to\rom
+```
+
 
 
 # CHIP-8 Emulator
