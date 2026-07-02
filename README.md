@@ -2,6 +2,8 @@
 ```THIS DOES NOT WORK YET```
 ```:(```
 
+```i dont think would work in windows```
+
 # PROJECT
 Building a CHIP-8 Emulator [C++]
 
@@ -19,18 +21,6 @@ cmake --build .
 ``` Linux / MacOS
 ./chip8 ../path/to/rom
 ```
-
-``` Windows(msvc)
-mkdir build
-cd build
-cmake ..
-cmake --build . --config Release
-```
-```RUN
-Release\chip8.exe ..\path\to\rom
-```
-
-
 
 # CHIP-8 Emulator
 
