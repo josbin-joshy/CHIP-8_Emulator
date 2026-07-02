@@ -232,7 +232,7 @@ void Chip8::OP_8xy7()
 {
     uint8_t Vx = (opcode & 0x0F00u) >> 8u;
     uint8_t Vy = (opcode & 0x00F0u) >> 4u;
-    if(registers[Vy] > registers[Vy])
+    if(registers[Vy] > registers[Vx])
         registers[0x000F] = 1;
     else    
         registers[0x000F] = 0;
@@ -407,7 +407,7 @@ void Chip8::OP_Fx65()
     }
 }
 
-
+//meow
 void Chip8::cycle()
 {
     //fetching instrucitons

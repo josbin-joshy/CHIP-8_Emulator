@@ -1,5 +1,7 @@
-#include"chip8.hpp"
 #include<iostream>
+#include<SDL2/SDL.h>
+#include"chip8.hpp"
+
 
 Chip8 chip8;
 
@@ -17,7 +19,7 @@ int main(int argc, char** argv)
     bool runflag{true};
     while(runflag)
     {
-
+        chip8.cycle();
     }
 
     return 0;
