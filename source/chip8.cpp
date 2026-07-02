@@ -1,8 +1,11 @@
+//i did random things to this i messed up
+//i don't know what i am doing anymore
 #include<cstdint>
 #include<fstream>
 #include<cstring>
 #include<chrono>
 #include<random>
+#include<iostream>
 #include<vector>
 #include"chip8.hpp"
 
@@ -64,7 +67,11 @@ void Chip8::loadROM(const char* filename)
         std::streamsize size{file.tellg()};
 
         //checking for overflow
-        if(size < 0 || size > 4096-START_ADDRESS) return;
+        if(size < 0 || size > 4096-START_ADDRESS) 
+        {
+            std::cerr << "Invalid ROM Size!\n";
+            return;
+        }
 
         //creating the array of that size
         std::vector<char> buffer(size); 
@@ -72,7 +79,9 @@ void Chip8::loadROM(const char* filename)
         //reading the file onto the new array 
         //first setting fp to start so that it can read
         file.seekg(0, std::ios::beg);
-        file.read(buffer.data(), size);
+        file.read((buffer.data()), size);
+
+        
 
         //closing it cause i odnt need it anymore :)---
         file.close();
@@ -80,12 +89,17 @@ void Chip8::loadROM(const char* filename)
         //now we load it muhahah
         for(long i = 0; i < size; ++i)
         {
-            memory[START_ADDRESS+i] = buffer[i];
+            memory[START_ADDRESS + i] = buffer[i];
         }
 
-        //freeeeeeeeeeeeeee we dont like memory leaks
     }
-    
+
+    if(!file)
+    {
+        std::cerr << "Error Reading ROM file!\n";
+        return;
+    }
+        
 }
 
 void Chip8::OP_00E0()
