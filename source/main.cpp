@@ -13,7 +13,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    const char* filename{argv[argc-1]};
+    const char* filename{argv[1]};
     chip8.loadROM(filename);
 
     bool runflag{true};
