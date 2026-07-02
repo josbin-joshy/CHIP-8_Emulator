@@ -14,6 +14,14 @@ int main(int argc, char** argv)
     }
 
     const char* filename{argv[1]};
+
+    if(SDL_Init(SDL_INIT_VIDEO) != 0)
+    {
+        std::cerr << "SDL Error: " << SDL_GetError() << '\n';
+        return 1;
+    }
+
+    SDL_Window* window = SDL_CreateWindow("CHIP-8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 64, 32, SDL_WINDOW_SHOWN);
     chip8.loadROM(filename);
 
     bool runflag{true};
