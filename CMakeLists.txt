@@ -9,9 +9,13 @@ project(
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED OFF)
 
+find_package(SDL2 REQUIRED)
+
 add_executable(
     chip8
-    main.cpp
-    chip8.cpp
+    source/main.cpp
+    source/chip8.cpp
 )
+
+target_link_libraries(chip8 PRIVATE SDL2::SDL2)
 

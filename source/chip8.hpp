@@ -15,6 +15,7 @@ public:
 
     void loadROM(const char* filename);
     void cycle();
+    Chip8();
 
 private:
 
@@ -110,7 +111,7 @@ private:
 
     
 
-    Chip8();
+    
 
 
     //hmmmm
