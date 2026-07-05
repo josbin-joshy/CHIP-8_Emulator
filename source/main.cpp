@@ -1,5 +1,6 @@
 #include<iostream>
 #include<filesystem>
+#include<fmt/format.h>
 #include<SDL2/SDL.h>
 #include"chip8.hpp"
 
@@ -22,9 +23,9 @@ int main(int argc, char** argv)
     }
 
 
-    if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    if(SDL_Init(SDL_INIT_EVERYTHING))
     {
-        std::cerr << "SDL Error: " << SDL_GetError() << '\n';
+        std::cerr << "Error Initialise SDL2 :" << SDL_GetError() << '\n';
         return 1;
     }
 
