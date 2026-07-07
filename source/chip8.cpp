@@ -348,17 +348,14 @@ void Chip8::OP_Fx07()
 void Chip8::OP_Fx0A()
 {
     uint8_t Vx = (opcode & 0x0F00u) >> 8u;
-    bool keypress{false};
     for(uint8_t i = 0 ; i < 16 ; ++i)
     {
         if(keypad[i])
         {
             registers[Vx] = i;
-            keypress = true;
-            break;
+            return;
         }
-        if(!keypress)
-            pc -= 2;
+        pc-=2;
     }
 }
 
