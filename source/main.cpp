@@ -29,8 +29,8 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    SDL_Window* window = SDL_CreateWindow("CHIP-8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 320, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Window* window{SDL_CreateWindow("CHIP-8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 320, SDL_WINDOW_SHOWN)};
+    SDL_Renderer* renderer{SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED)};
     chip8.loadROM(filename);
 
     bool runflag{true};
@@ -47,7 +47,8 @@ int main(int argc, char** argv)
 
         chip8.cycle();
 
-        SDL_Delay(2); //500Hz cycles
+        SDL_Delay(16); //62.5Hz cycles  close enoguh to 60fps
+        
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
