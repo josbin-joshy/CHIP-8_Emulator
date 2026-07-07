@@ -31,6 +31,10 @@ int main(int argc, char** argv)
 
     SDL_Window* window{SDL_CreateWindow("CHIP-8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 320, SDL_WINDOW_SHOWN)};
     SDL_Renderer* renderer{SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED)};
+
+    //tryna fool the computer into thinking the pixels are smaller than it seems muhahaha
+    SDL_RenderSetLogicalSize(renderer,64,32);
+
     chip8.loadROM(filename);
 
     bool runflag{true};
@@ -43,12 +47,13 @@ int main(int argc, char** argv)
             if(event.type == SDL_QUIT)
                 runflag = false;
         }
-
-
         chip8.cycle();
 
+        SDL_SetRenderDrawColor(renderer,255,255,255,255);
+        SDL_RenderClear(renderer);
+
         SDL_Delay(16); //62.5Hz cycles  close enoguh to 60fps
-        
+
     }
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
