@@ -29,7 +29,7 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    SDL_Window* window{SDL_CreateWindow("CHIP-8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 320, SDL_WINDOW_SHOWN)};
+    SDL_Window* window{SDL_CreateWindow("CHIP-8", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 640, SDL_WINDOW_SHOWN)};
     SDL_Renderer* renderer{SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED)};
 
     //tryna fool the computer into thinking the pixels are smaller than it seems muhahaha
@@ -49,8 +49,26 @@ int main(int argc, char** argv)
         }
         chip8.cycle();
 
-        SDL_SetRenderDrawColor(renderer,255,255,255,255);
+        SDL_SetRenderDrawColor(renderer,0,0,0,255);
         SDL_RenderClear(renderer);
+
+        SDL_SetRenderDrawColor(renderer,255,255,255,255);
+
+        for(int y = 0 ; y < 32 ; ++y)
+        {
+            for(int x = 0 ; x < 64 ;++x)
+            {
+                if(chip8.video[x+y*64])
+                {
+                    SDL_Rect rect{x,y,1,1};
+                    SDL_RenderFillRect(renderer,&rect);
+                }
+            }
+        }
+
+        SDL_GetKeyFromScancode;
+
+        SDL_RenderPresent(renderer);
 
         SDL_Delay(16); //62.5Hz cycles  close enoguh to 60fps
 

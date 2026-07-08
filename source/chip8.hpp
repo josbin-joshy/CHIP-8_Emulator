@@ -16,6 +16,7 @@ public:
     void loadROM(const char* filename);
     void cycle();
     Chip8();
+    uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
 
 private:
 
@@ -105,7 +106,7 @@ private:
 
     uint8_t keypad[KEY_COUNT]{};
 
-    uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
+    
 
     uint16_t opcode{};
 
