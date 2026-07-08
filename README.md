@@ -89,6 +89,11 @@ The emulator repeatedly performs:
 * Timendus CHIP-8 Test Suite
 * https://austinmorlan.com/posts/chip8_emulator/
 
+## Test Roms
+
+* https://github.com/kripod/chip8-roms.git
+* https://github.com/Timendus/chip8-test-suite.git
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 (GPL-3.0).
