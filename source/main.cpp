@@ -69,7 +69,13 @@ int main(int argc, char** argv)
         {
             if(event.type == SDL_QUIT)
                 runflag = false;
+        
+            if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+            {
+                runflag = false;
+            }        
         }
+
 
         updatekeypad(chip8);
 
