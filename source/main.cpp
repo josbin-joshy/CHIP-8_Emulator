@@ -95,7 +95,7 @@ int main(int argc, char** argv)
 
         uint32_t current{SDL_GetTicks()};
 
-        if(lastick - current >= 16)
+        if(current - lastick >= 16)
         {
             if(chip8.delayTimer > 0)
                 --chip8.delayTimer;
