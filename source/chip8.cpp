@@ -1,5 +1,3 @@
-//i did random things to this i messed up
-//i don't know what i am doing anymore
 #include<cstdint>
 #include<fstream>
 #include<cstring>
