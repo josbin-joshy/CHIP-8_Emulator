@@ -9,6 +9,11 @@ void updatekeypad(Chip8 &chip8)
 {
     const uint8_t* key{SDL_GetKeyboardState(nullptr)};
 
+    //1 2 3 C
+    //4 5 6 D
+    //7 8 9 E
+    //A 0 B F
+
     chip8.keypad[0] = key[SDL_SCANCODE_X];  //0
     chip8.keypad[1] = key[SDL_SCANCODE_1];  //1
     chip8.keypad[2] = key[SDL_SCANCODE_2];  //2
