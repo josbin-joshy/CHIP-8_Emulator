@@ -1,6 +1,5 @@
 #include<iostream>
 #include<filesystem>
-#include<fmt/format.h>
 #include<SDL2/SDL.h>
 #include"chip8.hpp"
 
