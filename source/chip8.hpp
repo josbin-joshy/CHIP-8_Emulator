@@ -18,8 +18,6 @@ public:
     Chip8();
     uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
 
-private:
-
     void OP_00E0();  //Clear Display CLS
 
     void OP_00EE();  //Return from Subroutine RET

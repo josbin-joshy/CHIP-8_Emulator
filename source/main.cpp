@@ -66,7 +66,7 @@ int main(int argc, char** argv)
             }
         }
 
-        SDL_GetKeyFromScancode;
+        
 
         SDL_RenderPresent(renderer);
 
