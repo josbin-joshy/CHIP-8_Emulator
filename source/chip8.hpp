@@ -16,7 +16,6 @@ public:
     void loadROM(const char* filename);
     void cycle();
     Chip8();
-    uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
 
     void OP_00E0();  //Clear Display CLS
 
@@ -103,6 +102,8 @@ public:
     uint8_t soundTimer{};
 
     uint8_t keypad[KEY_COUNT]{};
+
+    uint32_t video[VIDEO_WIDTH * VIDEO_HEIGHT]{};
 
     
 
