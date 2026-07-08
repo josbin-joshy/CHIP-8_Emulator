@@ -5,6 +5,29 @@
 #include"chip8.hpp"
 
 
+void updatekeypad(Chip8 &chip8)
+{
+    const uint8_t* key{SDL_GetKeyboardState(nullptr)};
+
+    chip8.keypad[0] = key[SDL_SCANCODE_1];
+    chip8.keypad[1] = key[SDL_SCANCODE_2];
+    chip8.keypad[2] = key[SDL_SCANCODE_3];
+    chip8.keypad[3] = key[SDL_SCANCODE_4];
+    chip8.keypad[4] = key[SDL_SCANCODE_Q];
+    chip8.keypad[5] = key[SDL_SCANCODE_W];
+    chip8.keypad[6] = key[SDL_SCANCODE_E];
+    chip8.keypad[7] = key[SDL_SCANCODE_R];
+    chip8.keypad[8] = key[SDL_SCANCODE_A];
+    chip8.keypad[9] = key[SDL_SCANCODE_S];
+    chip8.keypad[10] = key[SDL_SCANCODE_D];
+    chip8.keypad[11] = key[SDL_SCANCODE_F];
+    chip8.keypad[12] = key[SDL_SCANCODE_Z];
+    chip8.keypad[13] = key[SDL_SCANCODE_X];
+    chip8.keypad[14] = key[SDL_SCANCODE_C];
+    chip8.keypad[15] = key[SDL_SCANCODE_V];
+}
+
+
 Chip8 chip8;
 
 int main(int argc, char** argv)
@@ -47,6 +70,9 @@ int main(int argc, char** argv)
             if(event.type == SDL_QUIT)
                 runflag = false;
         }
+
+        updatekeypad(chip8);
+
         chip8.cycle();
 
         SDL_SetRenderDrawColor(renderer,0,0,0,255);
@@ -65,8 +91,6 @@ int main(int argc, char** argv)
                 }
             }
         }
-
-        
 
         SDL_RenderPresent(renderer);
 
