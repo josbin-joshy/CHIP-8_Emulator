@@ -1,7 +1,8 @@
 # Build directory
 build/
 
-
+#Roms
+chip8-roms/
 
 # CMake generated files
 CMakeCache.txt
