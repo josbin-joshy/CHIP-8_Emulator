@@ -61,7 +61,12 @@ int main(int argc, char** argv)
     chip8.loadROM(filename);
 
     bool runflag{true};
+    
     SDL_Event event;
+
+
+    uint32_t lastick{SDL_GetTicks()};
+
     while(runflag)
     {
 
@@ -80,6 +85,19 @@ int main(int argc, char** argv)
         updatekeypad(chip8);
 
         chip8.cycle();
+
+        uint32_t current{SDL_GetTicks()};
+
+        if(lastick - current >= 16)
+        {
+            if(chip8.delayTimer > 0)
+                --chip8.delayTimer;
+            if(chip8.soundTimer > 0)
+                --chip8.soundTimer;
+            
+            lastick = current;
+        }
+
 
         SDL_SetRenderDrawColor(renderer,0,0,0,255);
         SDL_RenderClear(renderer);

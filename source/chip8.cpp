@@ -355,8 +355,8 @@ void Chip8::OP_Fx0A()
             registers[Vx] = i;
             return;
         }
-        pc-=2;
     }
+    pc-=2;
 }
 
 void Chip8::OP_Fx15()
