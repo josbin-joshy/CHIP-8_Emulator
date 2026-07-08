@@ -121,7 +121,7 @@ int main(int argc, char** argv)
 
         SDL_RenderPresent(renderer);
 
-        SDL_Delay(1); //333Hz
+        SDL_Delay(3); //333Hz
 
     }
     SDL_DestroyRenderer(renderer);
