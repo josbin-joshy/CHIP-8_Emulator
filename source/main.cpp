@@ -118,7 +118,6 @@ int main(int argc, char** argv)
 
         SDL_RenderPresent(renderer);
 
-        SDL_Delay(16); //62.5Hz cycles  close enoguh to 60fps
 
     }
     SDL_DestroyRenderer(renderer);
