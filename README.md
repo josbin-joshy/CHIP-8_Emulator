@@ -1,9 +1,3 @@
-# Read This
-```THIS DOES NOT WORK YET```
-```:(```
-# READ THIS TOO
-```i dont think would work in windows```
-
 # PROJECT
 Building a CHIP-8 Emulator [C++]
 
