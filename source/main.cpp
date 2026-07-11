@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 {
     if(argc < 2) 
     {
-        std::cerr << "usage: " << argv[0] << "<chip8ROM>\n";
+        std::cerr << "usage: " << argv[0] << " <Chip-8 ROM>\n";
         return 1;
     }
 
