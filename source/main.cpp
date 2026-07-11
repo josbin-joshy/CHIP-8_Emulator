@@ -83,9 +83,7 @@ int main(int argc, char** argv)
                 runflag = false;
         
             if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
-            {
-                runflag = false;
-            }        
+                runflag = false;      
         }
 
 
